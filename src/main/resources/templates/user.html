@@ -88,14 +88,10 @@
                                         <td th:text="${user.firstName}" />
                                         <td th:text="${user.lastName}" />
                                         <td th:text="${user.age}" />
-                                        <td>
-                                            <select name="roleIds" th:size="${user.role.size()}" disabled>
-                                                <option th:each="role: ${user.role}"
-                                                        th:value="${role.id}"
-                                                        th:text="${role.role}">
-                                                </option>
-                                            </select>
-                                        </td>
+                                        <td th:each="role: ${user.role}"
+                                            th:value="${role.id}"
+                                            th:text="${role.role}">
+
                                     </tr>
 
                                     </tbody>

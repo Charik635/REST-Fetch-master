@@ -44,41 +44,6 @@ public class UserController extends HttpServlet {
         return "admin";
     }
 
-    // add (post)
-    @PostMapping(value = "admin/add")
-    public String adminAddPost(User user, String[] roleIds) {
-        user.setRole(userService.getRoles(roleIds));
-        userService.insert(user);
-        return "redirect:/admin";
-    }
-
-    // edit (get)
-    @GetMapping(value = "admin/edit")
-    public String adminEditGet(ModelMap model, @RequestParam("id") Integer id) {
-        User user = userService.getUser(id);
-        model.addAttribute("user", user);
-        List<Role> roles = userService.getAllRoles();
-
-        roles.forEach(role -> role.setInUser(user.isRoleInUser(role)));
-        model.addAttribute("roles", roles);
-        return "admin/edit";
-    }
-
-    // edit (post)
-    @PostMapping(value = "admin/edit")
-    public String adminEditPost(User user, String[] roleIds) {
-        user.setRole(userService.getRoles(roleIds));
-        userService.update(user);
-        return "redirect:/admin";
-    }
-
-    // delete (post)
-    @PostMapping(value = "admin/delete")
-    public String adminDeletePost(@RequestParam("id") Integer id) {
-        userService.deleteUser(id);
-        return "redirect:/admin";
-    }
-
     // user (get)
     @GetMapping(value = "user")
     public String userGet(ModelMap modelMap, HttpSession httpSession) {
