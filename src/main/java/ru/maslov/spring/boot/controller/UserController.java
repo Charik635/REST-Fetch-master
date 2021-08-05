@@ -26,11 +26,6 @@ public class UserController extends HttpServlet {
         this.userService = userService;
     }
 
-    // entry point (get)
-    @GetMapping(value = "login")
-    public String loginGet() {
-        return "login";
-    }
 
     // admin (get)
     @GetMapping(value = "admin")
