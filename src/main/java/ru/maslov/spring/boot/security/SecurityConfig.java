@@ -28,8 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //auth.inMemoryAuthentication().withUser("ADMIN").password("ADMIN").roles("ADMIN");
-        auth.userDetailsService(userService); // конфигурация для прохождения аутентификации
+        auth.userDetailsService(userService);
     }
 
     @Override
@@ -64,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // защищенные URL
                 //.antMatchers("/admin").access("hasAnyRole('ADMIN')")
                 .antMatchers("/admin/**").access("hasAnyRole('ADMIN')")
-                .antMatchers("/user").access("hasAnyRole('USER')")
+                .antMatchers("/user").permitAll()
                 .anyRequest().authenticated();
 
     }
