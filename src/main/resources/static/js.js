@@ -3,7 +3,7 @@ const option = $("<option></option>");
 const tr = $("<tr></tr>");
 const td = $("<td></td>");
 //атрибуты для списка
-const select = $("<select disabled></select>").attr("name", "roleIds");
+const select = $("<td></td>").attr("name", "roleIds");
 const buttonGlobal = $("<button type='button' data-toggle='modal'></button>");
 
 let buttonEditUser;
